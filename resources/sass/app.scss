@@ -1,0 +1,18 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Style for active links of nav
+// .active a{
+// 			color:blue;
+// 			text-decoration: none;
+// }
+
+.h-screen{
+	height: 100vh; //alto del 100% de ese dispositivo
+}
