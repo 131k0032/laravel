@@ -65,20 +65,15 @@ class ProjectController extends Controller {
 
     // Toma los valores del metodo POST y los inserta en la tabla Project
     public function store(SaveProjectRequest $request){
-        // return request('title');
-       // Project::create([
-       //      'title'=>request('title'),
-       //      'url'=>request('url'),
-       //      'description'=>request('description'),
-       //  ]);
 
-        // En caso de tener el mismo nombre de campo en bd y en el formulario
-        // Project::create(request()->all());
-
-        // return $request->validated();
-
-        // Crea el registro con el metodo validated
-        Project::create($request->validated());
+        // Guarda la imagen en storage/images
+    
+        // Instanciamos la variable poryecto
+        $project = new Project($request->validated());
+        // Guardamos la imagen
+        $project->image= $request->file('image')->store('images');
+        // Guardamos en bd
+        $project->save();
 
         // Redirige al l index de proyectos
         return redirect()->route('projects.index')->with('status','Proyecto creado exitosamente');
