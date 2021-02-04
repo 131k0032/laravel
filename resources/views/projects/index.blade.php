@@ -38,7 +38,13 @@
 					 	</h5>	
 					 	<h6 class="card-subtitle">{{$project->created_at->format('d-m-Y')}}</h6>
 					 	<p class="card-text text-truncate">{{ $project->description }}</p>
-					 	 <a href="{{ route('projects.show', $project)}}" class="btn btn-primary btn-sm">Ver mas...</a>
+					 	<div class="d-flex justify-content-between align-items-center">
+					 		<a href="{{ route('projects.show', $project)}}" class="btn btn-primary btn-sm">Ver mas...</a>
+					 		@if($project->category_id)
+					 			<a href="#" class="badge badge-secondary">{{ $project->category->name}}</a>
+					 		@endif
+					 	</div>
+					 	 
 					 </div>
 				</div>
 		@empty
