@@ -74,6 +74,8 @@ Route::view('/quienes-somos', 'about')->name('about');
 // parametros de portafolio a project que se llame projects
 Route::resource('portafolio', 'ProjectController')->parameters(['portafolio'=>'project'])->names('projects');
 
+Route::get('categorias/{category}','CategoryController@show')->name('categories.show');
+
 // Retorna la vista contact
 Route::view('/contacto', 'contact')->name('contact');
 // Mensaje de contacto url contacto, usa MessagesControlles@funcion store para guardar mensajes de formulario por POST
