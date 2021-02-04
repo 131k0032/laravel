@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Project;
+use App\Category;
 use App\Events\ProjectSaved;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -61,7 +62,8 @@ class ProjectController extends Controller {
 
         // Pasamos un parametro vacio en la url
         return view('projects.create',[
-            'project' => new Project
+            'project' => new Project,
+            'categories'=>Category::pluck('name','id')
         ]);
     }
 
@@ -88,7 +90,8 @@ class ProjectController extends Controller {
     // Editar el proyecto
     public function edit(Project $project){
         return view('projects.edit', [
-            'project' => $project
+            'project' => $project,
+            'categories'=>Category::pluck('name','id')
         ]);
     }
 

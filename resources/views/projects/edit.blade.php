@@ -2,7 +2,7 @@
 @extends('layout')
 
 {{-- Titulo de la pagina, como segunto parámetro el contenido, no debe llevar el endsecion --}}
-@section('title', 'Crea proyecto')
+@section('title', 'Editar proyecto')
 
 {{-- Va a buscar un yield de nombre 'content' para agregarlo al contenido--}}
 {{-- Es decir lo reemplaza en @yield('content') de layout.blade.php --}}
