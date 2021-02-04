@@ -18,6 +18,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        // Agregamos los eventos y listeners en la carpeta app
+        \App\Events\ProjectSaved::class=>[
+            \App\Listeners\OptimazeProjectImage::class
+        ]
     ];
 
     /**
