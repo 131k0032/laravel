@@ -23,4 +23,10 @@ class Project extends Model
     public function getRouteKeyName(){
     	return 'url';
     }
+
+    // Un proyecto solo puede tener una categoria asociada, por eso está
+    // en singular
+    public function category(){ //$project->category
+        return $this->belongsTo(Category::class);
+    }
 }
