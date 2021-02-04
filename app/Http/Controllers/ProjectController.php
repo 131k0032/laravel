@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller {
@@ -96,8 +97,20 @@ class ProjectController extends Controller {
        //      'description'=>request('description'),
        //  ]);
 
-        $project->update( $request->validated() );
+        if($request->hasFile('image')){
+            // Borra la imagen almacenada en app/public/images/sotorage
+            Storage::delete($project->image);
+            // Llena los campos sin guardarlos
+            $project->fill($request->validated());
+            // Guardamos la imagen
+            $project->image= $request->file('image')->store('images');
+            // Guardamos en bd
+            $project->save();
+        }else{
+           $project->update( array_filter( $request->validated() ));
+        }
 
+        
         return redirect()->route('projects.show', $project)->with('status','Proyecto actualizado exitosamente');
     }
 
@@ -107,6 +120,8 @@ class ProjectController extends Controller {
         // Borrar sin RouteBinding
         // Project::destroy($id);
 
+        // Borra la imagen almacenada en app/public/images/sotorage
+        Storage::delete($project->image);
         // Borrarse asi mismo con el RouteBinding
         $project->delete();
 

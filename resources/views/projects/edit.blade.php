@@ -16,7 +16,7 @@
 			{{-- Para ver los errors en tu formulario al mandar campos vacios--}}
 			@include('partials.validation-errors')
 
-			<form class="bg-white py-3 px-4 shadow rounded" action="{{ route('projects.update', $project ) }}" method="POST">
+			<form class="bg-white py-3 px-4 shadow rounded" action="{{ route('projects.update', $project ) }}" method="POST" enctype="multipart/form-data">
 				{{-- Para que haga un input hidden que establezca el metodo patch --}}
 				@method('PATCH')
 
